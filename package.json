@@ -9,9 +9,13 @@
     "dev": "cd backend && npm run dev",
     "preinstall": "npm run install:csaf-validator-lib && npm run install:backend",
     "install:csaf-validator-lib": "cd csaf-validator-lib && npm ci",
-    "install:backend": "cd backend && npm ci"
+    "install:backend": "cd backend && npm ci",
+    "prepare": "husky install",
+    "process-readme": "markdown-toc -i README.md && prettier --write README.md && git add README.md"
   },
   "devDependencies": {
+    "husky": "^7.0.4",
+    "markdown-toc": "^1.2.0",
     "prettier": "^2.5.1",
     "typescript": "^4.6.2"
   }

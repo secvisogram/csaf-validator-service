@@ -1,0 +1,423 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CSAF Validator Service</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>CSAF Validator Service</h1>
+    <div class="app-desc">This is a service to validate documents against the CSAF standard.</div>
+    <div class="app-desc">More information: <a href="https://github.com/secvisogram/csaf-validator-service">https://github.com/secvisogram/csaf-validator-service</a></div>
+    <div class="app-desc">Contact Info: <a href="secvisogram@bsi.bund.de">secvisogram@bsi.bund.de</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:</div>
+    <div class="license-info">MIT</div>
+    <div class="license-url">https://spdx.org/licenses/MIT.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Default">Default</a></h4>
+  <ul>
+  <li><a href="#apiV1TestsGet"><code><span class="http-method">get</span> /api/v1/tests</code></a></li>
+  <li><a href="#apiV1ValidatePost"><code><span class="http-method">post</span> /api/v1/validate</code></a></li>
+  </ul>
+
+  <h1><a name="Default">Default</a></h1>
+  <div class="method"><a name="apiV1TestsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/v1/tests</code></pre></div>
+    <div class="method-summary">Retrieve all tests. (<span class="nickname">apiV1TestsGet</span>)</div>
+    <div class="method-notes">This endpoint is intended to be used to discover all available tests.</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200">inline_response_200</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "preset" : "preset"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Default Response
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1ValidatePost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/v1/validate</code></pre></div>
+    <div class="method-summary">Validate document. (<span class="nickname">apiV1ValidatePost</span>)</div>
+    <div class="method-notes">This endpoint is intended to validate a document against the specified tests.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">inline_object <a href="#inline_object">inline_object</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_1">inline_response_200_1</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "tests" : [ {
+    "warnings" : [ {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    }, {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    } ],
+    "isValid" : true,
+    "name" : "name",
+    "errors" : [ {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    }, {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    } ],
+    "infos" : [ {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    }, {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    } ]
+  }, {
+    "warnings" : [ {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    }, {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    } ],
+    "isValid" : true,
+    "name" : "name",
+    "errors" : [ {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    }, {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    } ],
+    "infos" : [ {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    }, {
+      "instancePath" : "instancePath",
+      "message" : "message"
+    } ]
+  } ],
+  "isValid" : true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Default Response
+        <a href="#inline_response_200_1">inline_response_200_1</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#_api_v1_validate_tests"><code>_api_v1_validate_tests</code> - </a></li>
+    <li><a href="#inline_object"><code>inline_object</code> - </a></li>
+    <li><a href="#inline_response_200"><code>inline_response_200</code> - </a></li>
+    <li><a href="#inline_response_200_1"><code>inline_response_200_1</code> - </a></li>
+    <li><a href="#inline_response_200_1_errors"><code>inline_response_200_1_errors</code> - </a></li>
+    <li><a href="#inline_response_200_1_infos"><code>inline_response_200_1_infos</code> - </a></li>
+    <li><a href="#inline_response_200_1_tests"><code>inline_response_200_1_tests</code> - </a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="_api_v1_validate_tests"><code>_api_v1_validate_tests</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">preset</div><div class="param-enum">test</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_object"><code>inline_object</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">tests </div><div class="param-desc"><span class="param-type"><a href="#_api_v1_validate_tests">array[_api_v1_validate_tests]</a></span>  </div>
+<div class="param">document </div><div class="param-desc"><span class="param-type"><a href="#object">map[String, Object]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200"><code>inline_response_200</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">preset </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_1"><code>inline_response_200_1</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">isValid </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">tests </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_1_tests">array[inline_response_200_1_tests]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_1_errors"><code>inline_response_200_1_errors</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">instancePath </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_1_infos"><code>inline_response_200_1_infos</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">instancePath </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_1_tests"><code>inline_response_200_1_tests</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">errors </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_1_errors">array[inline_response_200_1_errors]</a></span>  </div>
+<div class="param">infos </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_1_infos">array[inline_response_200_1_infos]</a></span>  </div>
+<div class="param">warnings </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_1_infos">array[inline_response_200_1_infos]</a></span>  </div>
+<div class="param">isValid </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

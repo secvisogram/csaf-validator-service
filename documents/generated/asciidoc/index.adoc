@@ -1,0 +1,378 @@
+= CSAF Validator Service
+secvisogram@bsi.bund.de
+1.0.0
+:toc: left
+:numbered:
+:toclevels: 3
+:source-highlighter: highlightjs
+:keywords: openapi, rest, CSAF Validator Service
+:specDir: 
+:snippetDir: 
+:generator-template: v1 2019-12-20
+:info-url: https://github.com/secvisogram/csaf-validator-service
+:app-name: CSAF Validator Service
+
+[abstract]
+.Abstract
+This is a service to validate documents against the CSAF standard.
+
+
+// markup not found, no include::{specDir}intro.adoc[opts=optional]
+
+
+
+== Endpoints
+
+
+[.Default]
+=== Default
+
+
+[.apiV1TestsGet]
+==== apiV1TestsGet
+
+`GET /api/v1/tests`
+
+Retrieve all tests.
+
+===== Description
+
+This endpoint is intended to be used to discover all available tests.
+
+
+// markup not found, no include::{specDir}api/v1/tests/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+
+
+===== Return Type
+
+array[<<inline_response_200>>]
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Default Response
+| List[<<inline_response_200>>] 
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/v1/tests/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/v1/tests/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/v1/tests/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/v1/tests/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.apiV1ValidatePost]
+==== apiV1ValidatePost
+
+`POST /api/v1/validate`
+
+Validate document.
+
+===== Description
+
+This endpoint is intended to validate a document against the specified tests.
+
+
+// markup not found, no include::{specDir}api/v1/validate/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| InlineObject
+|  <<InlineObject>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<inline_response_200_1>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Default Response
+|  <<inline_response_200_1>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}api/v1/validate/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}api/v1/validate/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :api/v1/validate/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}api/v1/validate/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[#models]
+== Models
+
+
+[#ApiV1ValidateTests]
+=== _ApiV1ValidateTests_ 
+
+
+
+[.fields-ApiV1ValidateTests]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| name
+| X
+| String 
+| 
+|  
+
+| type
+| X
+| String 
+| 
+|  _Enum:_ preset, test, 
+
+|===
+
+
+[#InlineObject]
+=== _InlineObject_ 
+
+
+
+[.fields-InlineObject]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| tests
+| X
+| List  of <<_api_v1_validate_tests>>
+| 
+|  
+
+| document
+| X
+| Map  of <<object>>
+| 
+|  
+
+|===
+
+
+[#InlineResponse200]
+=== _InlineResponse200_ 
+
+
+
+[.fields-InlineResponse200]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| name
+| X
+| String 
+| 
+|  
+
+| preset
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#InlineResponse2001]
+=== _InlineResponse2001_ 
+
+
+
+[.fields-InlineResponse2001]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| isValid
+| X
+| Boolean 
+| 
+|  
+
+| tests
+| X
+| List  of <<inline_response_200_1_tests>>
+| 
+|  
+
+|===
+
+
+[#InlineResponse2001Errors]
+=== _InlineResponse2001Errors_ 
+
+
+
+[.fields-InlineResponse2001Errors]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| instancePath
+| X
+| String 
+| 
+|  
+
+| message
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#InlineResponse2001Infos]
+=== _InlineResponse2001Infos_ 
+
+
+
+[.fields-InlineResponse2001Infos]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| instancePath
+| X
+| String 
+| 
+|  
+
+| message
+| X
+| String 
+| 
+|  
+
+|===
+
+
+[#InlineResponse2001Tests]
+=== _InlineResponse2001Tests_ 
+
+
+
+[.fields-InlineResponse2001Tests]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| errors
+| X
+| List  of <<inline_response_200_1_errors>>
+| 
+|  
+
+| infos
+| X
+| List  of <<inline_response_200_1_infos>>
+| 
+|  
+
+| warnings
+| X
+| List  of <<inline_response_200_1_infos>>
+| 
+|  
+
+| isValid
+| X
+| Boolean 
+| 
+|  
+
+| name
+| X
+| String 
+| 
+|  
+
+|===
+
+

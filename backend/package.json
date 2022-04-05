@@ -10,7 +10,7 @@
     "close-with-grace": "^1.1.0",
     "config": "^3.3.7",
     "fastify": "^3.27.4",
-    "fastify-plugin": "^3.0.1"
+    "fastify-swagger": "^5.1.0"
   },
   "devDependencies": {
     "@types/chai": "^4.3.0",

@@ -6,6 +6,89 @@ import validate from '../../../csaf-validator-lib/validate.js'
 
 /** @typedef {Parameters<typeof validate>[0][number]} DocumentTest */
 
+const swaggerInfo = {
+  description:
+    'This endpoint is intended to validate a document against the specified tests.',
+  summary: 'Validate document.',
+}
+
+/** @type {import('ajv').JSONSchemaType<import('./validate/types.js').RequestBody>} */
+const requestBodySchema = {
+  type: 'object',
+  required: ['document', 'tests'],
+  properties: {
+    tests: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: ['name', 'type'],
+        properties: {
+          name: { type: 'string' },
+          type: { type: 'string', enum: ['preset', 'test'] },
+        },
+      },
+    },
+    document: {
+      type: 'object',
+      additionalProperties: true,
+      properties: {},
+    },
+  },
+}
+
+/** @type {import('ajv').JSONSchemaType<import('./validate/types.js').ResponseBody>} */
+const responseSchema = {
+  type: 'object',
+  required: ['isValid', 'tests'],
+  properties: {
+    isValid: { type: 'boolean' },
+    tests: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: ['errors', 'infos', 'isValid', 'name', 'warnings'],
+        properties: {
+          errors: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['instancePath'],
+              properties: {
+                instancePath: { type: 'string' },
+                message: { type: 'string', nullable: true },
+              },
+            },
+          },
+          infos: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['instancePath', 'message'],
+              properties: {
+                instancePath: { type: 'string' },
+                message: { type: 'string' },
+              },
+            },
+          },
+          warnings: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['instancePath', 'message'],
+              properties: {
+                instancePath: { type: 'string' },
+                message: { type: 'string' },
+              },
+            },
+          },
+          isValid: { type: 'boolean' },
+          name: { type: 'string' },
+        },
+      },
+    },
+  },
+}
+
 /** @type {Record<string, Parameters<typeof validate>[0][number] | undefined>} */
 const tests = Object.fromEntries(
   /** @type {Array<[string, any]>} */ (Object.entries(schemaTests))
@@ -26,33 +109,21 @@ const presets = {
  * @param {import('fastify').FastifyInstance} fastify
  */
 export default async function (fastify) {
-  /** @type {import('ajv').JSONSchemaType<import('./validate/types.js').RequestBody>} */
-  const requestBodySchema = {
-    type: 'object',
-    required: ['document', 'tests'],
-    properties: {
-      tests: {
-        type: 'array',
-        items: {
-          type: 'object',
-          required: ['name', 'type'],
-          properties: {
-            name: { type: 'string' },
-            type: { type: 'string', enum: ['preset', 'test'] },
-          },
-        },
-      },
-      document: {
-        type: 'object',
-        additionalProperties: true,
-        properties: {},
-      },
-    },
-  }
-
   fastify.post(
     '/api/v1/validate',
-    { schema: { body: requestBodySchema } },
+    {
+      schema: {
+        ...swaggerInfo,
+        body: requestBodySchema,
+        response: {
+          200: responseSchema,
+        },
+      },
+    },
+
+    /**
+     * @returns {Promise<import('./validate/types.js').ResponseBody>}
+     */
     async (request) => {
       const requestBody =
         /** @type {import('./validate/types.js').RequestBody} */ (request.body)
