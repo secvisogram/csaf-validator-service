@@ -10,7 +10,7 @@
   "dependencies": {
     "close-with-grace": "^1.1.0",
     "config": "^3.3.8",
-    "fastify": "^3.29.2",
+    "fastify": "^3.29.4",
     "fastify-swagger": "~5.1.0"
   },
   "devDependencies": {
