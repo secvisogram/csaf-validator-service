@@ -1,3 +1,4 @@
+import config from 'config'
 import { getHunspellAvailableLangs } from '../../csaf-validator-lib/hunspell.js'
 
 /**
@@ -41,6 +42,11 @@ export default async function(fastify) {
     }
   )
   fastify.register(import('@fastify/cors'), {
-    // customize here
+    origin: config.get('cors')?.origin,
+    methods: config.get('cors')?.methods,
+    allowedHeaders: config.get('cors')?.allowedHeaders,
+    exposedHeaders: config.get('cors')?.exposedHeaders,
+    credentials: config.get('cors')?.credentials,
+    maxAge: config.get('cors')?.maxAge,
   })
 }
