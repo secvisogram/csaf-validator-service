@@ -4,6 +4,7 @@
 - [Getting started](#getting-started)
 - [Documentation](#documentation)
 - [Configuration](#configuration)
+  - [CORS](#cors)
 - [Developing](#developing)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -49,6 +50,15 @@ The documentation is available as a swagger resource provided by the service its
 ## Configuration
 
 The project uses the [config](https://www.npmjs.com/package/config) npm package for configuration. It provides a variety of possibilities to inject configuration values e.g. environment variables or environment specific files.
+
+### CORS
+
+Fastify CORS options can be configured by passing an options object by the name `cors`
+
+The following options are available:
+`origin`, `methods`, `allowedHeaders`, `exposedHeaders`, `credentials`, `maxAge`
+
+See [Fastify CORS options](https://github.com/fastify/fastify-cors#options) for more information
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
 
