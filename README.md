@@ -23,7 +23,7 @@ This is a service to validate documents against the [CSAF standard](https://docs
 
 To run the validator service you basically need the same as for [developing](#developing).
 
-- install Node.js 16
+- install Node.js 20
 - install production dependencies and copy all relevant files to the dist
   folder by running `npm run dist`
 - copy the content of the dist folder to your working directory
@@ -66,7 +66,7 @@ See [Fastify CORS options](https://github.com/fastify/fastify-cors#options) for 
 
 ### Prerequisites
 
-You need at least **Node.js version 16 or higher**. [Nodesource](https://github.com/nodesource/distributions/blob/master/README.md) provides binary distributions for various Linux distributions.
+You need at least **Node.js version 20 or higher**. [Nodesource](https://github.com/nodesource/distributions/blob/master/README.md) provides binary distributions for various Linux distributions.
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
 
