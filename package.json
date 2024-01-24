@@ -1,6 +1,5 @@
 {
-  "name": "csaf-validator-service",
-  "private": true,
+  "name": "@secvisogram/csaf-validator-service",
   "type": "module",
   "scripts": {
     "start": "cd backend && npm start",
@@ -15,6 +14,17 @@
     "prepare": "husky install",
     "process-readme": "markdown-toc -i README.md && prettier --write README.md && git add README.md",
     "dist": "./scripts/dist.sh"
+  },
+  "keywords": [
+    "csaf",
+    "csaf full validator",
+    "csaf extended validator",
+    "csaf basic validator",
+    "csaf-validator-service",
+    "secvisogram"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "husky": "^7.0.4",
