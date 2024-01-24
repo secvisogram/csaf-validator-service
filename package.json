@@ -17,6 +17,9 @@
   },
   "keywords": [
     "csaf",
+    "csaf full validator",
+    "csaf extended validator",
+    "csaf basic validator",
     "csaf-validator-service",
     "secvisogram"
   ],
