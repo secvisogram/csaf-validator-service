@@ -3,8 +3,8 @@ import closeWithGrace from 'close-with-grace'
 import config from 'config'
 
 const app = Fastify({
-    logger: true,
-    bodyLimit: config.get('bodyLimit')
+  logger: true,
+  bodyLimit: config.get('bodyLimit'),
 })
 
 app.register(import('./lib/app.js'))
@@ -19,14 +19,17 @@ const closeListeners = closeWithGrace(
   }
 )
 
-app.addHook('onClose', async (_instance, done) => {
+app.addHook('onClose', (_instance, done) => {
   closeListeners.uninstall()
   done()
 })
 
-app.listen(config.get('port'), config.get('ip'), (err) => {
-  if (err) {
-    app.log.error(err)
-    process.exit(1)
+app.listen(
+  { port: config.get('port'), host: config.get('ip') },
+  (err) => {
+    if (err) {
+      app.log.error(err)
+      process.exit(1)
+    }
   }
-})
+)
