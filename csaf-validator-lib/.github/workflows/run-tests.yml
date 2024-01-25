@@ -1,0 +1,32 @@
+name: Run Tests
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get install hunspell
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run test-report
+      - run: npm run test-coverage-lcov
+      - name: Save PR number
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+        run: |
+          echo $PR_NUMBER > ./pr_number
+      - uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: test-results
+          path: |
+            test-results.json
+            coverage
+            pr_number
