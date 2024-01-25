@@ -16,7 +16,10 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm test
+      - run: |
+          npm run start &
+          sleep 3 &&
+          npm test
 
   publish-npm:
     needs: build
