@@ -134,7 +134,7 @@ docker run -d -p 8082:8082 --name csaf-validator-service csaf/validator-service
 
 ## Persist with pm2
 
-If you want to start the service with pm2 you have to adjust the `instace_var` attribute for pm2.
+If you want to start the service with [pm2](https://github.com/Unitech/pm2) you have to adjust the `instance_var` attribute for pm2.
 You can do this by adding the following configuration in the `backend` folder.
 Depending on the directory you chose, you have to adjust the `cwd` and `NODE_CONFIG_DIR` attributes accordingly.
 
