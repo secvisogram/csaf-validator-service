@@ -10,6 +10,8 @@
   - [Installation](#installation)
   - [Run server](#run-server)
 - [Testing](#testing)
+- [Docker](#docker)
+- [Persist with pm2](#persist-with-pm2)
 - [Contributing](#contributing)
 - [Dependencies](#dependencies)
 
@@ -128,6 +130,40 @@ Start container
 
 ```sh
 docker run -d -p 8082:8082 --name csaf-validator-service csaf/validator-service
+```
+
+## Persist with pm2
+
+If you want to start the service with [pm2](https://github.com/Unitech/pm2) you have to adjust the `instance_var` attribute for pm2.
+You can do this by adding the following configuration in the `backend` folder.
+Depending on the directory you chose, you have to adjust the `cwd` and `NODE_CONFIG_DIR` attributes accordingly.
+
+```javascript
+// pm2.config.cjs
+module.exports = {
+  apps: [
+    {
+      name: 'csaf-validator-service',
+      script: './server.js',
+      cwd: '/var/www/csaf-validator-service/backend',
+      instance_var: 'INSTANCE_ID',
+      env: {
+        NODE_ENV: 'development',
+        NODE_CONFIG_DIR: '/var/www/csaf-validator-service/backend/config/',
+      },
+      env_production: {
+        NODE_ENV: 'production',
+        NODE_CONFIG_DIR: '/var/www/csaf-validator-service/backend/config/',
+      },
+    },
+  ],
+}
+```
+
+To start the service execute this command inside the backend directory:
+
+```sh
+pm2 start pm2.config.js --env production
 ```
 
 ## Contributing
