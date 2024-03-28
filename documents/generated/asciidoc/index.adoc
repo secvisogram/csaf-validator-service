@@ -188,24 +188,28 @@ endif::internal-generation[]
 
 
 
+
 [.fields-ApiV1TestsGet200ResponseInner]
-[cols="2,1,2,4,1"]
+[cols="2,1,1,2,4,1"]
 |===
-| Field Name| Required| Type| Description| Format
+| Field Name| Required| Nullable | Type| Description | Format
 
 | name
 | X
-| String 
 | 
-|  
+|   String  
+| 
+|     
 
 | preset
 | X
-| String 
 | 
-|  
+|   String  
+| 
+|     
 
 |===
+
 
 
 [#ApiV1ValidatePost200Response]
@@ -213,24 +217,28 @@ endif::internal-generation[]
 
 
 
+
 [.fields-ApiV1ValidatePost200Response]
-[cols="2,1,2,4,1"]
+[cols="2,1,1,2,4,1"]
 |===
-| Field Name| Required| Type| Description| Format
+| Field Name| Required| Nullable | Type| Description | Format
 
 | isValid
 | X
-| Boolean 
 | 
-|  
+|   Boolean  
+| 
+|     
 
 | tests
 | X
-| List  of <<_api_v1_validate_post_200_response_tests_inner>>
 | 
-|  
+|   List   of <<_api_v1_validate_post_200_response_tests_inner>>
+| 
+|     
 
 |===
+
 
 
 [#ApiV1ValidatePost200ResponseTestsInner]
@@ -238,42 +246,49 @@ endif::internal-generation[]
 
 
 
+
 [.fields-ApiV1ValidatePost200ResponseTestsInner]
-[cols="2,1,2,4,1"]
+[cols="2,1,1,2,4,1"]
 |===
-| Field Name| Required| Type| Description| Format
+| Field Name| Required| Nullable | Type| Description | Format
 
 | errors
 | X
-| List  of <<_api_v1_validate_post_200_response_tests_inner_errors_inner>>
 | 
-|  
+|   List   of <<_api_v1_validate_post_200_response_tests_inner_errors_inner>>
+| 
+|     
 
 | warnings
 | X
-| List  of <<_api_v1_validate_post_200_response_tests_inner_warnings_inner>>
 | 
-|  
+|   List   of <<_api_v1_validate_post_200_response_tests_inner_warnings_inner>>
+| 
+|     
 
 | infos
 | X
-| List  of <<_api_v1_validate_post_200_response_tests_inner_warnings_inner>>
 | 
-|  
+|   List   of <<_api_v1_validate_post_200_response_tests_inner_warnings_inner>>
+| 
+|     
 
 | isValid
 | X
-| Boolean 
 | 
-|  
+|   Boolean  
+| 
+|     
 
 | name
 | X
-| String 
 | 
-|  
+|   String  
+| 
+|     
 
 |===
+
 
 
 [#ApiV1ValidatePost200ResponseTestsInnerErrorsInner]
@@ -281,24 +296,28 @@ endif::internal-generation[]
 
 
 
+
 [.fields-ApiV1ValidatePost200ResponseTestsInnerErrorsInner]
-[cols="2,1,2,4,1"]
+[cols="2,1,1,2,4,1"]
 |===
-| Field Name| Required| Type| Description| Format
+| Field Name| Required| Nullable | Type| Description | Format
 
 | instancePath
 | X
-| String 
 | 
-|  
+|   String  
+| 
+|     
 
 | message
 | 
-| String 
+| X
+|   String  
 | 
-|  
+|     
 
 |===
+
 
 
 [#ApiV1ValidatePost200ResponseTestsInnerWarningsInner]
@@ -306,24 +325,28 @@ endif::internal-generation[]
 
 
 
+
 [.fields-ApiV1ValidatePost200ResponseTestsInnerWarningsInner]
-[cols="2,1,2,4,1"]
+[cols="2,1,1,2,4,1"]
 |===
-| Field Name| Required| Type| Description| Format
+| Field Name| Required| Nullable | Type| Description | Format
 
 | instancePath
 | X
-| String 
 | 
-|  
+|   String  
+| 
+|     
 
 | message
 | X
-| String 
 | 
-|  
+|   String  
+| 
+|     
 
 |===
+
 
 
 [#ApiV1ValidatePostRequest]
@@ -331,24 +354,28 @@ endif::internal-generation[]
 
 
 
+
 [.fields-ApiV1ValidatePostRequest]
-[cols="2,1,2,4,1"]
+[cols="2,1,1,2,4,1"]
 |===
-| Field Name| Required| Type| Description| Format
+| Field Name| Required| Nullable | Type| Description | Format
 
 | tests
 | X
-| List  of <<_api_v1_validate_post_request_tests_inner>>
 | 
-|  
+|   List   of <<_api_v1_validate_post_request_tests_inner>>
+| 
+|     
 
 | document
 | X
-| Map  of <<AnyType>>
 | 
-|  
+|   Map   of <<AnyType>>
+| 
+|     
 
 |===
+
 
 
 [#ApiV1ValidatePostRequestTestsInner]
@@ -356,24 +383,28 @@ endif::internal-generation[]
 
 
 
+
 [.fields-ApiV1ValidatePostRequestTestsInner]
-[cols="2,1,2,4,1"]
+[cols="2,1,1,2,4,1"]
 |===
-| Field Name| Required| Type| Description| Format
+| Field Name| Required| Nullable | Type| Description | Format
 
 | name
 | X
-| String 
 | 
-|  _Enum:_ schema, mandatory, optional, informative, basic, extended, full, 
+|  <<String>>  
+| 
+|  _Enum:_ schema, mandatory, optional, informative, basic, extended, full,  
 
 | type
 | X
-| String 
 | 
-|  _Enum:_ test, preset, 
+|  <<String>>  
+| 
+|  _Enum:_ test, preset,  
 
 |===
+
 
 
 [#ApiV1ValidatePostRequestTestsInnerOneOf]
@@ -381,24 +412,28 @@ endif::internal-generation[]
 
 
 
+
 [.fields-ApiV1ValidatePostRequestTestsInnerOneOf]
-[cols="2,1,2,4,1"]
+[cols="2,1,1,2,4,1"]
 |===
-| Field Name| Required| Type| Description| Format
+| Field Name| Required| Nullable | Type| Description | Format
 
 | name
 | X
-| String 
 | 
-|  _Enum:_ csaf_2_0, csaf_2_0_strict, mandatoryTest_6_1_1, mandatoryTest_6_1_10, mandatoryTest_6_1_11, mandatoryTest_6_1_12, mandatoryTest_6_1_13, mandatoryTest_6_1_14, mandatoryTest_6_1_15, mandatoryTest_6_1_16, mandatoryTest_6_1_17, mandatoryTest_6_1_18, mandatoryTest_6_1_19, mandatoryTest_6_1_2, mandatoryTest_6_1_20, mandatoryTest_6_1_21, mandatoryTest_6_1_22, mandatoryTest_6_1_23, mandatoryTest_6_1_24, mandatoryTest_6_1_25, mandatoryTest_6_1_26, mandatoryTest_6_1_27_1, mandatoryTest_6_1_27_10, mandatoryTest_6_1_27_11, mandatoryTest_6_1_27_2, mandatoryTest_6_1_27_3, mandatoryTest_6_1_27_4, mandatoryTest_6_1_27_5, mandatoryTest_6_1_27_6, mandatoryTest_6_1_27_7, mandatoryTest_6_1_27_8, mandatoryTest_6_1_27_9, mandatoryTest_6_1_28, mandatoryTest_6_1_29, mandatoryTest_6_1_3, mandatoryTest_6_1_30, mandatoryTest_6_1_31, mandatoryTest_6_1_32, mandatoryTest_6_1_33, mandatoryTest_6_1_4, mandatoryTest_6_1_5, mandatoryTest_6_1_6, mandatoryTest_6_1_7, mandatoryTest_6_1_8, mandatoryTest_6_1_9, optionalTest_6_2_1, optionalTest_6_2_10, optionalTest_6_2_11, optionalTest_6_2_12, optionalTest_6_2_13, optionalTest_6_2_14, optionalTest_6_2_15, optionalTest_6_2_16, optionalTest_6_2_17, optionalTest_6_2_18, optionalTest_6_2_19, optionalTest_6_2_2, optionalTest_6_2_20, optionalTest_6_2_3, optionalTest_6_2_4, optionalTest_6_2_5, optionalTest_6_2_6, optionalTest_6_2_7, optionalTest_6_2_8, optionalTest_6_2_9, informativeTest_6_3_1, informativeTest_6_3_10, informativeTest_6_3_11, informativeTest_6_3_2, informativeTest_6_3_3, informativeTest_6_3_4, informativeTest_6_3_5, informativeTest_6_3_6, informativeTest_6_3_7, informativeTest_6_3_8, informativeTest_6_3_9, 
+|  <<String>>  
+| 
+|  _Enum:_ csaf_2_0, csaf_2_0_strict, mandatoryTest_6_1_1, mandatoryTest_6_1_10, mandatoryTest_6_1_11, mandatoryTest_6_1_12, mandatoryTest_6_1_13, mandatoryTest_6_1_14, mandatoryTest_6_1_15, mandatoryTest_6_1_16, mandatoryTest_6_1_17, mandatoryTest_6_1_18, mandatoryTest_6_1_19, mandatoryTest_6_1_2, mandatoryTest_6_1_20, mandatoryTest_6_1_21, mandatoryTest_6_1_22, mandatoryTest_6_1_23, mandatoryTest_6_1_24, mandatoryTest_6_1_25, mandatoryTest_6_1_26, mandatoryTest_6_1_27_1, mandatoryTest_6_1_27_10, mandatoryTest_6_1_27_11, mandatoryTest_6_1_27_2, mandatoryTest_6_1_27_3, mandatoryTest_6_1_27_4, mandatoryTest_6_1_27_5, mandatoryTest_6_1_27_6, mandatoryTest_6_1_27_7, mandatoryTest_6_1_27_8, mandatoryTest_6_1_27_9, mandatoryTest_6_1_28, mandatoryTest_6_1_29, mandatoryTest_6_1_3, mandatoryTest_6_1_30, mandatoryTest_6_1_31, mandatoryTest_6_1_32, mandatoryTest_6_1_33, mandatoryTest_6_1_4, mandatoryTest_6_1_5, mandatoryTest_6_1_6, mandatoryTest_6_1_7, mandatoryTest_6_1_8, mandatoryTest_6_1_9, optionalTest_6_2_1, optionalTest_6_2_10, optionalTest_6_2_11, optionalTest_6_2_12, optionalTest_6_2_13, optionalTest_6_2_14, optionalTest_6_2_15, optionalTest_6_2_16, optionalTest_6_2_17, optionalTest_6_2_18, optionalTest_6_2_19, optionalTest_6_2_2, optionalTest_6_2_20, optionalTest_6_2_3, optionalTest_6_2_4, optionalTest_6_2_5, optionalTest_6_2_6, optionalTest_6_2_7, optionalTest_6_2_8, optionalTest_6_2_9, informativeTest_6_3_1, informativeTest_6_3_10, informativeTest_6_3_11, informativeTest_6_3_2, informativeTest_6_3_3, informativeTest_6_3_4, informativeTest_6_3_5, informativeTest_6_3_6, informativeTest_6_3_7, informativeTest_6_3_8, informativeTest_6_3_9,  
 
 | type
 | X
-| String 
 | 
-|  _Enum:_ test, 
+|  <<String>>  
+| 
+|  _Enum:_ test,  
 
 |===
+
 
 
 [#ApiV1ValidatePostRequestTestsInnerOneOf1]
@@ -406,23 +441,27 @@ endif::internal-generation[]
 
 
 
+
 [.fields-ApiV1ValidatePostRequestTestsInnerOneOf1]
-[cols="2,1,2,4,1"]
+[cols="2,1,1,2,4,1"]
 |===
-| Field Name| Required| Type| Description| Format
+| Field Name| Required| Nullable | Type| Description | Format
 
 | name
 | X
-| String 
 | 
-|  _Enum:_ schema, mandatory, optional, informative, basic, extended, full, 
+|  <<String>>  
+| 
+|  _Enum:_ schema, mandatory, optional, informative, basic, extended, full,  
 
 | type
 | X
-| String 
 | 
-|  _Enum:_ preset, 
+|  <<String>>  
+| 
+|  _Enum:_ preset,  
 
 |===
+
 
 
