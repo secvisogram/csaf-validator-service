@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download workflow artifact
-      uses: dawidd6/action-download-artifact@v2.27.0
+      uses: dawidd6/action-download-artifact@v3.1.4
       with:
         workflow: run-tests.yml
         name: test-results
@@ -19,7 +19,7 @@ jobs:
         PR_NUMBER=$(cat pr_number)
         echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
     - name: Test Report
-      uses: phoenix-actions/test-reporting@v12
+      uses: phoenix-actions/test-reporting@v13
       id: test-report
       with:
         artifact: test-results
