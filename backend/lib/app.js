@@ -10,7 +10,7 @@ export default async function (fastify) {
     openapi: {
       info: {
         title: 'CSAF Validator Service',
-        version: '1.3.40',
+        version: '1.3.41',
         description:
           'This is a service to validate documents against the CSAF standard.',
         contact: {
