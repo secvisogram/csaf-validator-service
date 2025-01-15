@@ -10,7 +10,7 @@ export default async function (fastify) {
     openapi: {
       info: {
         title: 'CSAF Validator Service',
-        version: '1.3.43',
+        version: '1.3.44',
         description:
           'This is a service to validate documents against the CSAF standard.',
         contact: {
@@ -32,7 +32,7 @@ export default async function (fastify) {
     (availableLangs) => {
       fastify.log.info(
         'Installation of hunspell found! Available languages: ' +
-        availableLangs.join(', ')
+          availableLangs.join(', ')
       )
     },
     () => {
