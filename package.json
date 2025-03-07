@@ -12,7 +12,6 @@
     "install:csaf-validator-lib": "cd csaf-validator-lib && npm ci",
     "install:backend": "cd backend && npm ci",
     "prepare": "husky install",
-    "process-readme": "README.md && prettier --write README.md && git add README.md",
     "dist": "./scripts/dist.sh"
   },
   "keywords": [
