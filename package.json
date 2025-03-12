@@ -11,7 +11,6 @@
     "preinstall": "npm run install:csaf-validator-lib && npm run install:backend",
     "install:csaf-validator-lib": "cd csaf-validator-lib && npm ci",
     "install:backend": "cd backend && npm ci",
-    "prepare": "husky install",
     "dist": "./scripts/dist.sh"
   },
   "keywords": [
@@ -26,7 +25,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "husky": "^7.0.4",
     "prettier": "^2.8.8",
     "typescript": "^5.3.3"
   },
