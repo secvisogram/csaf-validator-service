@@ -1,5 +1,20 @@
 # BSI Secvisogram CSAF Validator Service
 
+- [About the project](#about-the-project)
+- [Getting started](#getting-started)
+- [Documentation](#documentation)
+- [Configuration](#configuration)
+  - [CORS](#cors)
+- [Developing](#developing)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Run server](#run-server)
+- [Testing](#testing)
+- [Docker](#docker)
+- [Persist with pm2](#persist-with-pm2)
+- [Contributing](#contributing)
+- [Dependencies](#dependencies)
+
 ## About the project
 
 This is a service to validate documents against the [CSAF standard](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html). It uses the [csaf-validator-lib](https://github.com/secvisogram/csaf-validator-lib) under the hood which is included as a `git subtree` module.
