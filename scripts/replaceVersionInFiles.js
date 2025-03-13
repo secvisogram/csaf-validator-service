@@ -6,12 +6,8 @@
 
 import { resolve } from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
-import { exec } from 'node:child_process'
-import { promisify } from 'node:util'
 import { openApiInfo } from '../backend/lib/openApiInfo.js'
 import prettier from 'prettier'
-
-const execAsync = promisify(exec)
 
 /**
  * During the run of the script the dev server is started to update
