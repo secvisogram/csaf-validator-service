@@ -4,10 +4,9 @@
  * - backend/lib/app.js
  */
 
-import path, { resolve } from 'node:path'
+import { resolve } from 'node:path'
 import { readFile, writeFile } from 'node:fs/promises'
-import { exec, fork } from 'node:child_process'
-import waitOn from 'wait-on'
+import { exec } from 'node:child_process'
 import { promisify } from 'node:util'
 import { openApiInfo } from '../backend/lib/openApiInfo.js'
 import prettier from 'prettier'
@@ -18,7 +17,6 @@ const execAsync = promisify(exec)
  * During the run of the script the dev server is started to update
  * the api documentation. This is the port which is used by the server.
  */
-const SERVER_PORT = 8082
 const OPEN_API_INFO_MODULE = resolve(
   import.meta.dirname,
   '../backend/lib/openApiInfo.js'
@@ -49,28 +47,3 @@ await writeFile(
     }
   )
 )
-
-/**
- * Spawn the server process and capture a handle `srv` to its child process
- * to be able to kill the process at the end of the script.
- *
- * @type {import('node:child_process').ChildProcess}
- */
-const srv = await new Promise((resolve) => {
-  const srv = fork('./server.js', {
-    cwd: path.resolve(import.meta.dirname, '../backend'),
-  })
-  resolve(
-    waitOn({
-      resources: [`tcp:${SERVER_PORT}`],
-    }).then(() => srv)
-  )
-})
-
-await execAsync(
-  `npx openapi-generator-cli generate -i http://localhost:${SERVER_PORT}/docs/json -g html -o ./documents/generated/html/`
-)
-await execAsync(
-  `openapi-generator-cli generate -i http://localhost:${SERVER_PORT}/docs/json -g asciidoc -o ./documents/generated/asciidoc/`
-)
-srv.kill('SIGTERM')

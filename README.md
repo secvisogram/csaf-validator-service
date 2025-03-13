@@ -1,5 +1,6 @@
 # BSI Secvisogram CSAF Validator Service
 
+<!-- TOC depthfrom:2 depthto:3 -->
 - [About the project](#about-the-project)
 - [Getting started](#getting-started)
 - [Documentation](#documentation)
@@ -14,6 +15,7 @@
 - [Persist with pm2](#persist-with-pm2)
 - [Contributing](#contributing)
 - [Dependencies](#dependencies)
+<!-- /TOC -->
 
 ## About the project
 
