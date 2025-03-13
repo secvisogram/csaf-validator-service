@@ -1,6 +1,6 @@
 export const openApiInfo = /** @type {const} */ ({
   title: 'CSAF Validator Service',
-  version: '1.3.47',
+  version: '1.3.48',
   description:
     'This is a service to validate documents against the CSAF standard.',
   contact: {
