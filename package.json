@@ -11,8 +11,6 @@
     "preinstall": "npm run install:csaf-validator-lib && npm run install:backend",
     "install:csaf-validator-lib": "cd csaf-validator-lib && npm ci",
     "install:backend": "cd backend && npm ci",
-    "prepare": "husky install",
-    "process-readme": "markdown-toc -i README.md && prettier --write README.md && git add README.md",
     "dist": "./scripts/dist.sh",
     "preversion": "",
     "version": "node ./scripts/replaceVersionInFiles.js  && git add backend/lib/openApiInfo.js documents/generated/html/index.html documents/generated/asciidoc/index.adoc"
@@ -33,8 +31,6 @@
     "@types/node": "^22.13.9",
     "@types/prettier": "^2.7.3",
     "@types/wait-on": "^5.3.4",
-    "husky": "^7.0.4",
-    "markdown-toc": "^1.2.0",
     "prettier": "^2.8.8",
     "typescript": "^5.3.3",
     "wait-on": "^8.0.3"
