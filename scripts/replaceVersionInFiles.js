@@ -68,7 +68,7 @@ const srv = await new Promise((resolve) => {
 })
 
 await execAsync(
-  `npx openapi-generator-cli generate -i http://localhost:${SERVER_PORT}/docs/json -g html -o ./documents/generated/html/`
+  `openapi-generator-cli generate -i http://localhost:${SERVER_PORT}/docs/json -g html -o ./documents/generated/html/`
 )
 await execAsync(
   `openapi-generator-cli generate -i http://localhost:${SERVER_PORT}/docs/json -g asciidoc -o ./documents/generated/asciidoc/`
