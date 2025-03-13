@@ -11,7 +11,9 @@
     "preinstall": "npm run install:csaf-validator-lib && npm run install:backend",
     "install:csaf-validator-lib": "cd csaf-validator-lib && npm ci",
     "install:backend": "cd backend && npm ci",
-    "dist": "./scripts/dist.sh"
+    "dist": "./scripts/dist.sh",
+    "preversion": "",
+    "version": "node ./scripts/replaceVersionInFiles.js  && git add backend/lib/openApiInfo.js documents/generated/html/index.html documents/generated/asciidoc/index.adoc"
   },
   "keywords": [
     "csaf",
@@ -25,8 +27,13 @@
     "access": "public"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.17.0",
+    "@types/node": "^22.13.9",
+    "@types/prettier": "^2.7.3",
+    "@types/wait-on": "^5.3.4",
     "prettier": "^2.8.8",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "wait-on": "^8.0.3"
   },
   "version": "1.3.47"
 }
