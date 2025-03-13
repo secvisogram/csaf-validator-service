@@ -27,7 +27,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.17.0",
     "@types/node": "^22.13.9",
     "@types/prettier": "^2.7.3",
     "@types/wait-on": "^5.3.4",

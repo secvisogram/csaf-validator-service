@@ -1,6 +1,7 @@
 # BSI Secvisogram CSAF Validator Service
 
 <!-- TOC depthfrom:2 depthto:3 -->
+
 - [About the project](#about-the-project)
 - [Getting started](#getting-started)
 - [Documentation](#documentation)
@@ -10,11 +11,14 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Run server](#run-server)
+  - [Generate documentation](#generate-documentation)
+  - [Create new version](#create-new-version)
 - [Testing](#testing)
 - [Docker](#docker)
 - [Persist with pm2](#persist-with-pm2)
 - [Contributing](#contributing)
 - [Dependencies](#dependencies)
+
 <!-- /TOC -->
 
 ## About the project
@@ -101,6 +105,14 @@ The server needs to be running and the [`openapi-generator-cli`](https://openapi
 openapi-generator-cli generate -i http://localhost:8082/docs/json -g html -o ./documents/generated/html/
 openapi-generator-cli generate -i http://localhost:8082/docs/json -g asciidoc -o ./documents/generated/asciidoc/
 ```
+
+[(back to top)](#bsi-secvisogram-csaf-validator-service)
+
+### Create new version
+
+Make sure, you have the package [@openapitools/openapi-generator-cli](https://www.npmjs.com/package/@openapitools/openapi-generator-cli) installed globally (using `npm i -g @openapitools/openapi-generator-cli`).
+
+To create a new version use npm's [version](https://docs.npmjs.com/cli/v11/commands/npm-version) command and make sure that your server is not running (since this command will start it).
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
 
