@@ -23,6 +23,9 @@ ENV NODE_ENV=production
 COPY --from=appbuild /usr/src/csaf-validator-service/dist /usr/src/app
 COPY ./backend/config/development.json /usr/src/app/config/local-production.json
 
+# Check version and available dictionaries
+ENV LANG=en
+
 USER node
 EXPOSE 8082
 CMD [ "node", "backend/server.js" ]
