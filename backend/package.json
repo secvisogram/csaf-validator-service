@@ -8,11 +8,11 @@
     "dev": "nodemon -w \"*.js\" -w \"lib/**/*\" server.js"
   },
   "dependencies": {
-    "@fastify/cors": "^8.0.0",
-    "@fastify/swagger": "^7.0.0",
+    "@fastify/cors": "^8.5.0",
+    "@fastify/swagger": "^8.2.0",
     "close-with-grace": "^1.2.0",
     "config": "^3.3.8",
-    "fastify": "^4.25.2"
+    "fastify": "^4.29.0"
   },
   "devDependencies": {
     "@types/chai": "^4.3.5",
@@ -21,7 +21,7 @@
     "@types/node": "^18.16.16",
     "ajv": "^8.11.2",
     "chai": "^4.3.7",
-    "mocha": "^10.2.0",
+    "mocha": "^11.1.0",
     "nodemon": "^3.0.1",
     "undici": "^5.22.1"
   }
