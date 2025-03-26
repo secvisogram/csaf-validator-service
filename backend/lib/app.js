@@ -7,14 +7,15 @@ import { openApiInfo } from './openApiInfo.js'
  */
 export default async function (fastify) {
   fastify.register(import('@fastify/swagger'), {
-    routePrefix: '/docs',
     openapi: {
       info: {
         ...openApiInfo,
       },
     },
     hideUntagged: false,
-    exposeRoute: true,
+  })
+  fastify.register(import('@fastify/swagger-ui'), {
+    routePrefix: '/docs',
   })
   fastify.register(import('./app/getTests.js'))
   fastify.register(import('./app/validate.js'))
