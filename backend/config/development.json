@@ -3,6 +3,7 @@
   "port": 8082,
   "bodyLimit": 52428800,
   "cors": {
-    "origin": ["*"]
+    "origin": ["*"],
+    "allowedHeaders": ["*"]
   }
 }
