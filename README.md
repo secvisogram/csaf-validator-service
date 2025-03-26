@@ -110,8 +110,6 @@ openapi-generator-cli generate -i http://localhost:8082/docs/json -g asciidoc -o
 
 ### Create new version
 
-Make sure, you have the package [@openapitools/openapi-generator-cli](https://www.npmjs.com/package/@openapitools/openapi-generator-cli) installed globally (using `npm i -g @openapitools/openapi-generator-cli`).
-
 To create a new version use npm's [version](https://docs.npmjs.com/cli/v11/commands/npm-version) command and make sure that your server is not running (since this command will start it).
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
