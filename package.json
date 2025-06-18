@@ -13,7 +13,7 @@
     "install:backend": "cd backend && npm ci",
     "dist": "./scripts/dist.sh",
     "preversion": "",
-    "version": "node ./scripts/replaceVersionInFiles.js  && git add backend/lib/openApiInfo.js documents/generated/html/index.html documents/generated/asciidoc/index.adoc"
+    "version": "node ./scripts/replaceVersionInFiles.js  && git add backend/lib/openApiInfo.js documents/generated"
   },
   "keywords": [
     "csaf",
