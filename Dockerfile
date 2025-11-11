@@ -19,7 +19,7 @@ RUN cp -r ./ /usr/src/csaf-validator-service/dist/health_check
 
 FROM node:20-alpine
 WORKDIR /usr/src/app
-RUN apk add hunspell hunspell-en hunspell-de-de; \
+RUN apk add --no-cache hunspell hunspell-en hunspell-de-de; \
 	ln -s /usr/share/hunspell/en_US.aff /usr/share/hunspell/en.aff; \
 	ln -s /usr/share/hunspell/en_US.dic /usr/share/hunspell/en.dic; \
 	ln -s /usr/share/hunspell/de_DE.aff /usr/share/hunspell/de.aff; \
