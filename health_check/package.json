@@ -1,0 +1,15 @@
+{
+  "name": "health_check",
+  "version": "1.0.0",
+  "description": "NodeJS CLI tool check if the service responds on localhost. Dedicated for Docker Healthcheck without curl.",
+  "main": "healthcheck.js",
+   "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "config": "^3.3.12"
+  },
+  "author": "",
+  "license": "ISC"
+}
