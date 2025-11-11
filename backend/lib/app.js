@@ -40,4 +40,6 @@ export default async function (fastify) {
     credentials: config.get('cors')?.credentials,
     maxAge: config.get('cors')?.maxAge,
   })
+
+  fastify.register(import('fastify-healthcheck'))
 }
