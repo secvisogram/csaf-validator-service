@@ -8,6 +8,11 @@ COPY . .
 RUN npm ci; \
     npm run dist
 
+# Install healthcheck dependencies and copy to dist
+WORKDIR /usr/src/csaf-validator-service/health_check
+RUN npm ci --omit=dev
+RUN cp -r ./ /usr/src/csaf-validator-service/dist/health_check
+
 # Build Stage 2
 # This build takes the production build from staging build
 #
@@ -28,4 +33,5 @@ ENV LANG=en
 
 USER node
 EXPOSE 8082
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s CMD ["node","health_check/healthcheck.js"]
 CMD [ "node", "backend/server.js" ]
