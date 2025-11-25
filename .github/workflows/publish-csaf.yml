@@ -1,0 +1,31 @@
+name: 'Validate & Sign CSAF (Local Test)'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  csaf-local-test:
+    runs-on: ubuntu-latest
+    name: Check and Sign CSAF documents
+    
+    steps:
+      # Schreibt den PGP-Schlüssel aus dem Secret in eine temporäre Datei
+      - name: Import PGP key from secret
+        run: echo "${{ secrets.PGP_SIGNING_KEY }}" > private.key
+
+      # Führt die CSAF-Action aus
+      - name: Check and Sign CSAF advisories
+        uses: csaf-tools/csaf-action@v0.2.0
+        with:
+          command: check,sign
+          advisories: 'advisories/*.json'
+          key: private.key
+          passphrase: ${{ secrets.PGP_PASSPHRASE }}
+          output: signed_advisories
+
+
+
+
+
+# Bei einem lokalen Test mit `act` gibt es kein echtes "origin" Remote-Repository, zu dem gepusht werden kann. Der `git push` Befehl wartet indefinit auf eine Verbindung.
+# Das Problem liegt in der csaf-action selbst, nicht in Ihrem Workflow. Die Action versucht, Änderungen zu pushen, was bei einem lokalen Test nicht funktioniert.
