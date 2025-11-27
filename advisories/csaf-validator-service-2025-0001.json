@@ -868,7 +868,6 @@
           "CSAFPID-00064"
         ],
         "known_not_affected": [
-          "CSAFPID-00000",
           "CSAFPID-00001",
           "CSAFPID-00002",
           "CSAFPID-00003",
@@ -940,7 +939,6 @@
           "date": "2025-11-20T09:00:00.000Z",
           "details": "The js-yaml dependency is a transitive development dependency of the cypress-code-coverage library in the secvisogram app. The cypress-code-coverage is only used in the development. It is not part of the delivered secvisogram.\n",
           "product_ids": [
-            "CSAFPID-00000",
             "CSAFPID-00001",
             "CSAFPID-00002",
             "CSAFPID-00003",
