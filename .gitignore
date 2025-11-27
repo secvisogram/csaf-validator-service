@@ -3,3 +3,6 @@
 /build
 openapitools.json
 backend/test-results.json
+.secrets
+private.asc
+private.key
