@@ -23,6 +23,9 @@
     "csaf-validator-service",
     "secvisogram"
   ],
+  "repository": {
+    "url": "https://github.com/secvisogram/csaf-validator-service"
+  },
   "publishConfig": {
     "access": "public"
   },
