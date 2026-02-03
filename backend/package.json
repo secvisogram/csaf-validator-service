@@ -13,7 +13,7 @@
     "@fastify/swagger-ui": "^5.2.2",
     "close-with-grace": "^1.2.0",
     "config": "^3.3.8",
-    "fastify": "^5.3.2"
+    "fastify": "^5.7.3"
   },
   "devDependencies": {
     "@types/chai": "^4.3.5",
