@@ -1,6 +1,6 @@
 = CSAF Validator Service
 secvisogram@bsi.bund.de
-2.0.18
+2.0.19
 :toc: left
 :numbered:
 :toclevels: 4
