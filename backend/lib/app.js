@@ -1,5 +1,5 @@
 import config from 'config'
-import { getHunspellAvailableLangs } from '../../csaf-validator-lib/hunspell.js'
+import { getHunspellAvailableLangs } from '@secvisogram/csaf-validator-lib/hunspell.js'
 import { openApiInfo } from './openApiInfo.js'
 
 /**

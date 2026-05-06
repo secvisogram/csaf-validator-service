@@ -1,11 +1,11 @@
-import * as schemaTests from '../../../csaf-validator-lib/schemaTests.js'
-import * as mandatoryTests from '../../../csaf-validator-lib/mandatoryTests.js'
-import * as optionalTests from '../../../csaf-validator-lib/optionalTests.js'
-import * as informativeTests from '../../../csaf-validator-lib/informativeTests.js'
-import * as basic from '../../../csaf-validator-lib/basic.js'
-import * as extended from '../../../csaf-validator-lib/extended.js'
-import * as full from '../../../csaf-validator-lib/full.js'
-import validateStrict from '../../../csaf-validator-lib/validateStrict.js'
+import * as schemaTests from '@secvisogram/csaf-validator-lib/schemaTests.js'
+import * as mandatoryTests from '@secvisogram/csaf-validator-lib/mandatoryTests.js'
+import * as optionalTests from '@secvisogram/csaf-validator-lib/optionalTests.js'
+import * as informativeTests from '@secvisogram/csaf-validator-lib/informativeTests.js'
+import * as basic from '@secvisogram/csaf-validator-lib/basic.js'
+import * as extended from '@secvisogram/csaf-validator-lib/extended.js'
+import * as full from '@secvisogram/csaf-validator-lib/full.js'
+import validateStrict from '@secvisogram/csaf-validator-lib/validateStrict.js'
 
 /** @type {Record<string, Parameters<typeof validateStrict>[0][number] | undefined>} */
 const tests = Object.fromEntries(
@@ -30,7 +30,7 @@ const presets = {
 
 const swaggerInfo = {
   description:
-    'This endpoint is intended to validate a document against the specified tests. In the list of tests provide at least one object, where each object is used to run either a single test or an entire preset. For \'name\' provide the test\'s or the preset\'s name, and as \'type\' provide accordingly either \'test\' or \'preset\'. For the value of the property \'document\' just provide the json of your CSAF document.',
+    "This endpoint is intended to validate a document against the specified tests. In the list of tests provide at least one object, where each object is used to run either a single test or an entire preset. For 'name' provide the test's or the preset's name, and as 'type' provide accordingly either 'test' or 'preset'. For the value of the property 'document' just provide the json of your CSAF document.",
   summary: 'Validate document.',
 }
 

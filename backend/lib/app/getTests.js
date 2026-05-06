@@ -1,7 +1,7 @@
-import * as schemaTests from '../../../csaf-validator-lib/schemaTests.js'
-import * as mandatoryTests from '../../../csaf-validator-lib/mandatoryTests.js'
-import * as optionalTests from '../../../csaf-validator-lib/optionalTests.js'
-import * as informativeTests from '../../../csaf-validator-lib/informativeTests.js'
+import * as schemaTests from '@secvisogram/csaf-validator-lib/schemaTests.js'
+import * as mandatoryTests from '@secvisogram/csaf-validator-lib/mandatoryTests.js'
+import * as optionalTests from '@secvisogram/csaf-validator-lib/optionalTests.js'
+import * as informativeTests from '@secvisogram/csaf-validator-lib/informativeTests.js'
 
 const swaggerInfo = {
   description:
