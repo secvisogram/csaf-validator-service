@@ -1,13 +1,13 @@
 import { expect } from 'chai'
 import { Agent, request, setGlobalDispatcher } from 'undici'
-import * as schemaTests from '../../csaf-validator-lib/schemaTests.js'
-import * as mandatoryTests from '../../csaf-validator-lib/mandatoryTests.js'
-import * as optionalTests from '../../csaf-validator-lib/optionalTests.js'
-import * as informativeTests from '../../csaf-validator-lib/informativeTests.js'
-import * as basic from '../../csaf-validator-lib/basic.js'
-import * as extended from '../../csaf-validator-lib/extended.js'
-import * as full from '../../csaf-validator-lib/full.js'
-import validate from '../../csaf-validator-lib/validate.js'
+import * as schemaTests from '@secvisogram/csaf-validator-lib/schemaTests.js'
+import * as mandatoryTests from '@secvisogram/csaf-validator-lib/mandatoryTests.js'
+import * as optionalTests from '@secvisogram/csaf-validator-lib/optionalTests.js'
+import * as informativeTests from '@secvisogram/csaf-validator-lib/informativeTests.js'
+import * as basic from '@secvisogram/csaf-validator-lib/basic.js'
+import * as extended from '@secvisogram/csaf-validator-lib/extended.js'
+import * as full from '@secvisogram/csaf-validator-lib/full.js'
+import validate from '@secvisogram/csaf-validator-lib/validate.js'
 import { getConfig } from './shared/configData.js'
 import { getValidSampleDocuments } from './shared/sampleDocumentsData.js'
 
@@ -73,35 +73,35 @@ describe('API', function () {
 
   describe('OPTIONS /api/v1/tests', function () {
     it('returns valid CORS information', async function () {
-          const res = await request(
-            'http://localhost:' + getConfig().port + '/api/v1/tests',
-            {
-              method: 'OPTIONS',
-              headers: {
-                'Origin': 'http://localhost',
-                'Access-Control-Request-Method': 'GET',
-                'Access-Control-Request-Headers': 'content-type'
-              }
-            }
-          )
-          expect(res.statusCode).to.equal(204)
+      const res = await request(
+        'http://localhost:' + getConfig().port + '/api/v1/tests',
+        {
+          method: 'OPTIONS',
+          headers: {
+            Origin: 'http://localhost',
+            'Access-Control-Request-Method': 'GET',
+            'Access-Control-Request-Headers': 'content-type',
+          },
+        }
+      )
+      expect(res.statusCode).to.equal(204)
     })
   })
 
   describe('OPTIONS /api/v1/validate', function () {
     it('returns valid CORS information', async function () {
-          const res = await request(
-            'http://localhost:' + getConfig().port + '/api/v1/validate',
-            {
-              method: 'OPTIONS',
-              headers: {
-                'Origin': 'http://localhost',
-                'Access-Control-Request-Method': 'POST',
-                'Access-Control-Request-Headers': 'content-type'
-              }
-            }
-          )
-          expect(res.statusCode).to.equal(204)
+      const res = await request(
+        'http://localhost:' + getConfig().port + '/api/v1/validate',
+        {
+          method: 'OPTIONS',
+          headers: {
+            Origin: 'http://localhost',
+            'Access-Control-Request-Method': 'POST',
+            'Access-Control-Request-Headers': 'content-type',
+          },
+        }
+      )
+      expect(res.statusCode).to.equal(204)
     })
   })
 
