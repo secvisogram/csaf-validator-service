@@ -29,8 +29,20 @@ const presets = {
 /** @typedef {Parameters<typeof validateStrict>[0][number]} DocumentTest */
 
 const swaggerInfo = {
-  description:
-    "This endpoint is intended to validate a document against the specified tests. In the list of tests provide at least one object, where each object is used to run either a single test or an entire preset. For 'name' provide the test's or the preset's name, and as 'type' provide accordingly either 'test' or 'preset'. For the value of the property 'document' just provide the json of your CSAF document.",
+  description: `This endpoint validates a CSAF document against a selected set of tests. \
+In the 'tests' array, provide at least one entry. Each entry runs either a single named test (type 'test') or a named preset (type 'preset') that expands to a fixed group of tests. \
+Duplicate tests resulting from overlapping entries are automatically removed.
+
+**Available presets and their contents:**
+- \`schema\` – \`csaf_2_0\` and \`csaf_2_0_strict\` (JSON Schema validation; strict variant disallows additional properties)
+- \`mandatory\` – all mandatory tests (section 6.1)
+- \`optional\` – all optional tests (section 6.2)
+- \`informative\` – all informative tests (section 6.3)
+- \`basic\` – \`csaf_2_0_strict\` plus all mandatory tests (test 6.1.8 is already covered by the schema test and is excluded)
+- \`extended\` – everything in \`basic\` plus all optional tests
+- \`full\` – everything in \`extended\` plus all informative tests
+
+Use \`GET /api/v1/tests\` to retrieve a list of all individual test names and the atomic preset each belongs to.`,
   summary: 'Validate document.',
 }
 
@@ -38,6 +50,12 @@ const swaggerInfo = {
 const requestBodySchema = {
   type: 'object',
   required: ['document', 'tests'],
+  examples: [
+    {
+      tests: [{ name: 'full', type: 'preset' }],
+      document: { document: { category: 'csaf_base', csaf_version: '2.0' } },
+    },
+  ],
   properties: {
     tests: {
       type: 'array',
