@@ -38,7 +38,7 @@ Duplicate tests resulting from overlapping entries are automatically removed.
 - \`mandatory\` – all mandatory tests (section 6.1)
 - \`optional\` – all optional tests (section 6.2)
 - \`informative\` – all informative tests (section 6.3)
-- \`basic\` – \`csaf_2_0_strict\` plus all mandatory tests (test 6.1.8 is already covered by the schema test and is excluded)
+- \`basic\` – \`csaf_2_0_strict\` (JSON Schema validation: strict variant disallows additional properties) plus all mandatory tests (test 6.1.8 is already covered by the schema test and is excluded)
 - \`extended\` – everything in \`basic\` plus all optional tests
 - \`full\` – everything in \`extended\` plus all informative tests
 
