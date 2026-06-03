@@ -250,7 +250,19 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /api/v1/validate</code></pre></div>
     <div class="method-summary">Validate document. (<span class="nickname">apiV1ValidatePost</span>)</div>
-    <div class="method-notes">This endpoint is intended to validate a document against the specified tests. In the list of tests provide at least one object, where each object is used to run either a single test or an entire preset. For 'name' provide the test's or the preset's name, and as 'type' provide accordingly either 'test' or 'preset'. For the value of the property 'document' just provide the json of your CSAF document.</div>
+    <div class="method-notes"><p>This endpoint validates a CSAF document against a selected set of tests. In the 'tests' array, provide at least one entry. Each entry runs either a single named test (type 'test') or a named preset (type 'preset') that expands to a fixed group of tests. Duplicate tests resulting from overlapping entries are automatically removed.</p>
+<p><strong>Available presets and their contents:</strong></p>
+<ul>
+<li><code>schema</code> – <code>csaf_2_0</code> and <code>csaf_2_0_strict</code> (JSON Schema validation; strict variant disallows additional properties)</li>
+<li><code>mandatory</code> – all mandatory tests (section 6.1)</li>
+<li><code>optional</code> – all optional tests (section 6.2)</li>
+<li><code>informative</code> – all informative tests (section 6.3)</li>
+<li><code>basic</code> – <code>csaf_2_0_strict</code> plus all mandatory tests (test 6.1.8 is already covered by the schema test and is excluded)</li>
+<li><code>extended</code> – everything in <code>basic</code> plus all optional tests</li>
+<li><code>full</code> – everything in <code>extended</code> plus all informative tests</li>
+</ul>
+<p>Use <code>GET /api/v1/tests</code> to retrieve a list of all individual test names and the atomic preset each belongs to.</p>
+</div>
 
 
     <h3 class="field-label">Consumes</h3>
