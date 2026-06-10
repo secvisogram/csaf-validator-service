@@ -21,7 +21,7 @@ RUN apk add hunspell hunspell-en hunspell-de-de; \
 	ln -s /usr/share/hunspell/de_DE.dic /usr/share/hunspell/de.dic 
 ENV NODE_ENV=production
 COPY --from=appbuild /usr/src/csaf-validator-service/dist /usr/src/app
-COPY ./backend/config/development.json /usr/src/app/config/local-production.json
+COPY ./backend/config/development.json /usr/src/app/config/production.json
 
 # Check version and available dictionaries
 ENV LANG=en
