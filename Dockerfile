@@ -5,7 +5,7 @@
 FROM node:20-alpine AS appbuild
 WORKDIR /usr/src/csaf-validator-service
 COPY . .
-RUN npm ci; \
+RUN npm ci && \
     npm run dist
 
 # Build Stage 2
@@ -14,10 +14,10 @@ RUN npm ci; \
 
 FROM node:20-alpine
 WORKDIR /usr/src/app
-RUN apk add hunspell hunspell-en hunspell-de-de; \
-	ln -s /usr/share/hunspell/en_US.aff /usr/share/hunspell/en.aff; \
-	ln -s /usr/share/hunspell/en_US.dic /usr/share/hunspell/en.dic; \
-	ln -s /usr/share/hunspell/de_DE.aff /usr/share/hunspell/de.aff; \
+RUN apk add hunspell hunspell-en hunspell-de-de && \
+	ln -s /usr/share/hunspell/en_US.aff /usr/share/hunspell/en.aff && \
+	ln -s /usr/share/hunspell/en_US.dic /usr/share/hunspell/en.dic && \
+	ln -s /usr/share/hunspell/de_DE.aff /usr/share/hunspell/de.aff && \
 	ln -s /usr/share/hunspell/de_DE.dic /usr/share/hunspell/de.dic 
 ENV NODE_ENV=production
 COPY --from=appbuild /usr/src/csaf-validator-service/dist /usr/src/app
