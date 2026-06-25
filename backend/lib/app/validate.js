@@ -93,7 +93,11 @@ const responseSchema = {
   type: 'object',
   required: ['isValid', 'tests'],
   properties: {
-    isValid: { type: 'boolean' },
+    isValid: {
+      type: 'boolean',
+      description:
+        'The logical AND of all per-test `isValid` flags. Only `false` when at least one test produced errors (i.e. a schema validation or mandatory test, section 6.1, failed). A document that only triggers optional warnings (section 6.2) or informative findings (section 6.3) will still return `isValid: true`.',
+    },
     tests: {
       type: 'array',
       items: {
@@ -102,6 +106,8 @@ const responseSchema = {
         properties: {
           errors: {
             type: 'array',
+            description:
+              'Errors produced by this test (schema validation or mandatory tests, section 6.1). A non-empty array sets `isValid` to `false` for this test. `message` may be absent for low-level schema errors.',
             items: {
               type: 'object',
               required: ['instancePath'],
@@ -113,6 +119,8 @@ const responseSchema = {
           },
           warnings: {
             type: 'array',
+            description:
+              'Warnings produced by this test (typically optional tests, section 6.2). Does not affect `isValid`.',
             items: {
               type: 'object',
               required: ['instancePath', 'message'],
@@ -124,6 +132,8 @@ const responseSchema = {
           },
           infos: {
             type: 'array',
+            description:
+              'Informational findings produced by this test (informative tests, section 6.3). Does not affect `isValid`.',
             items: {
               type: 'object',
               required: ['instancePath', 'message'],
@@ -133,7 +143,11 @@ const responseSchema = {
               },
             },
           },
-          isValid: { type: 'boolean' },
+          isValid: {
+            type: 'boolean',
+            description:
+              'Whether this individual test passed. Only `false` when the test produced errors. Optional tests (section 6.2) and informative tests (section 6.3) never produce errors, so their `isValid` is always `true`.',
+          },
           name: { type: 'string' },
         },
       },
