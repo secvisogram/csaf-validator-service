@@ -1,6 +1,6 @@
 = CSAF Validator Service
 secvisogram@bsi.bund.de
-2.0.28
+2.0.29
 :toc: left
 :numbered:
 :toclevels: 4
@@ -227,7 +227,7 @@ endif::internal-generation[]
 | X
 | 
 |   Boolean  
-| 
+| The logical AND of all per-test &#x60;isValid&#x60; flags. Only &#x60;false&#x60; when at least one test produced errors (i.e. a schema validation or mandatory test, section 6.1, failed). A document that only triggers optional warnings (section 6.2) or informative findings (section 6.3) will still return &#x60;isValid: true&#x60;.
 |     
 
 | tests
@@ -256,28 +256,28 @@ endif::internal-generation[]
 | X
 | 
 |   List   of <<_api_v1_validate_post_200_response_tests_inner_errors_inner>>
-| 
+| Errors produced by this test (schema validation or mandatory tests, section 6.1). A non-empty array sets &#x60;isValid&#x60; to &#x60;false&#x60; for this test. &#x60;message&#x60; may be absent for low-level schema errors.
 |     
 
 | warnings
 | X
 | 
 |   List   of <<_api_v1_validate_post_200_response_tests_inner_warnings_inner>>
-| 
+| Warnings produced by this test (typically optional tests, section 6.2). Does not affect &#x60;isValid&#x60;.
 |     
 
 | infos
 | X
 | 
 |   List   of <<_api_v1_validate_post_200_response_tests_inner_warnings_inner>>
-| 
+| Informational findings produced by this test (informative tests, section 6.3). Does not affect &#x60;isValid&#x60;.
 |     
 
 | isValid
 | X
 | 
 |   Boolean  
-| 
+| Whether this individual test passed. Only &#x60;false&#x60; when the test produced errors. Optional tests (section 6.2) and informative tests (section 6.3) never produce errors, so their &#x60;isValid&#x60; is always &#x60;true&#x60;.
 |     
 
 | name
