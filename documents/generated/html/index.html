@@ -183,7 +183,7 @@ font-style: italic;
     <div class="app-desc">This is a service to validate documents against the CSAF standard.</div>
     <div class="app-desc">More information: <a href="https://github.com/secvisogram/csaf-validator-service">https://github.com/secvisogram/csaf-validator-service</a></div>
     <div class="app-desc">Contact Info: <a href="secvisogram@bsi.bund.de">secvisogram@bsi.bund.de</a></div>
-    <div class="app-desc">Version: 2.0.28</div>
+    <div class="app-desc">Version: 2.0.29</div>
     <div class="app-desc">BasePath:</div>
     <div class="license-info">MIT</div>
     <div class="license-url">https://github.com/secvisogram/csaf-validator-service/blob/main/LICENSE</div>
@@ -387,7 +387,7 @@ font-style: italic;
     <h3><a name="_api_v1_validate_post_200_response"><code>_api_v1_validate_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">isValid </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+      <div class="param">isValid </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> The logical AND of all per-test <code>isValid</code> flags. Only <code>false</code> when at least one test produced errors (i.e. a schema validation or mandatory test, section 6.1, failed). A document that only triggers optional warnings (section 6.2) or informative findings (section 6.3) will still return <code>isValid: true</code>. </div>
 <div class="param">tests </div><div class="param-desc"><span class="param-type"><a href="#_api_v1_validate_post_200_response_tests_inner">array[_api_v1_validate_post_200_response_tests_inner]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
@@ -395,10 +395,10 @@ font-style: italic;
     <h3><a name="_api_v1_validate_post_200_response_tests_inner"><code>_api_v1_validate_post_200_response_tests_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errors </div><div class="param-desc"><span class="param-type"><a href="#_api_v1_validate_post_200_response_tests_inner_errors_inner">array[_api_v1_validate_post_200_response_tests_inner_errors_inner]</a></span>  </div>
-<div class="param">warnings </div><div class="param-desc"><span class="param-type"><a href="#_api_v1_validate_post_200_response_tests_inner_warnings_inner">array[_api_v1_validate_post_200_response_tests_inner_warnings_inner]</a></span>  </div>
-<div class="param">infos </div><div class="param-desc"><span class="param-type"><a href="#_api_v1_validate_post_200_response_tests_inner_warnings_inner">array[_api_v1_validate_post_200_response_tests_inner_warnings_inner]</a></span>  </div>
-<div class="param">isValid </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+      <div class="param">errors </div><div class="param-desc"><span class="param-type"><a href="#_api_v1_validate_post_200_response_tests_inner_errors_inner">array[_api_v1_validate_post_200_response_tests_inner_errors_inner]</a></span> Errors produced by this test (schema validation or mandatory tests, section 6.1). A non-empty array sets <code>isValid</code> to <code>false</code> for this test. <code>message</code> may be absent for low-level schema errors. </div>
+<div class="param">warnings </div><div class="param-desc"><span class="param-type"><a href="#_api_v1_validate_post_200_response_tests_inner_warnings_inner">array[_api_v1_validate_post_200_response_tests_inner_warnings_inner]</a></span> Warnings produced by this test (typically optional tests, section 6.2). Does not affect <code>isValid</code>. </div>
+<div class="param">infos </div><div class="param-desc"><span class="param-type"><a href="#_api_v1_validate_post_200_response_tests_inner_warnings_inner">array[_api_v1_validate_post_200_response_tests_inner_warnings_inner]</a></span> Informational findings produced by this test (informative tests, section 6.3). Does not affect <code>isValid</code>. </div>
+<div class="param">isValid </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether this individual test passed. Only <code>false</code> when the test produced errors. Optional tests (section 6.2) and informative tests (section 6.3) never produce errors, so their <code>isValid</code> is always <code>true</code>. </div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
