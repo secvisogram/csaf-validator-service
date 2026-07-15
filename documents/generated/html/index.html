@@ -183,7 +183,7 @@ font-style: italic;
     <div class="app-desc">This is a service to validate documents against the CSAF standard.</div>
     <div class="app-desc">More information: <a href="https://github.com/secvisogram/csaf-validator-service">https://github.com/secvisogram/csaf-validator-service</a></div>
     <div class="app-desc">Contact Info: <a href="secvisogram@bsi.bund.de">secvisogram@bsi.bund.de</a></div>
-    <div class="app-desc">Version: 2.0.29</div>
+    <div class="app-desc">Version: 2.0.30</div>
     <div class="app-desc">BasePath:</div>
     <div class="license-info">MIT</div>
     <div class="license-url">https://github.com/secvisogram/csaf-validator-service/blob/main/LICENSE</div>
@@ -293,16 +293,17 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "isValid" : true,
   "tests" : [ {
-    "errors" : [ {
+    "warnings" : [ {
       "instancePath" : "instancePath",
       "message" : "message"
     }, {
       "instancePath" : "instancePath",
       "message" : "message"
     } ],
-    "warnings" : [ {
+    "isValid" : true,
+    "name" : "name",
+    "errors" : [ {
       "instancePath" : "instancePath",
       "message" : "message"
     }, {
@@ -315,18 +316,18 @@ font-style: italic;
     }, {
       "instancePath" : "instancePath",
       "message" : "message"
-    } ],
-    "isValid" : true,
-    "name" : "name"
+    } ]
   }, {
-    "errors" : [ {
+    "warnings" : [ {
       "instancePath" : "instancePath",
       "message" : "message"
     }, {
       "instancePath" : "instancePath",
       "message" : "message"
     } ],
-    "warnings" : [ {
+    "isValid" : true,
+    "name" : "name",
+    "errors" : [ {
       "instancePath" : "instancePath",
       "message" : "message"
     }, {
@@ -339,10 +340,9 @@ font-style: italic;
     }, {
       "instancePath" : "instancePath",
       "message" : "message"
-    } ],
-    "isValid" : true,
-    "name" : "name"
-  } ]
+    } ]
+  } ],
+  "isValid" : true
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
