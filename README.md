@@ -4,17 +4,20 @@
 
 - [About the project](#about-the-project)
 - [Getting started](#getting-started)
+  - [Docker](#quick-start-using-docker)
+  - [Manual installation](#installation-step-by-step)
+  - [Testrun](#testrun)
+    - [Use API webpage](#validate-a-json-file)
 - [Documentation](#documentation)
 - [Configuration](#configuration)
   - [CORS](#cors)
 - [Developing](#developing)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+  - [Installation](#installation-developing)
   - [Run server](#run-server)
   - [Generate documentation](#generate-documentation)
   - [Create new version](#create-new-version)
 - [Testing](#testing)
-- [Docker](#docker)
 - [Persist with pm2](#persist-with-pm2)
 - [Contributing](#contributing)
 - [Dependencies](#dependencies)
@@ -27,20 +30,61 @@ This is a service to validate documents against the [CSAF standard](https://docs
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
 
-## Getting started
-
-To run the validator service you basically need the same as for [developing](#developing).
+### Requirements
 
 - install Node.js 20
-- install production dependencies and copy all relevant files to the dist
-  folder by running `npm run dist`
-- copy the content of the dist folder to your working directory
-- Make sure to set the environment variable `NODE_ENV` to `production`
-- Configure the service using a `local-production.json` file in
-  `backend/config`. All available parameters are outlined in `backend/config/development.json`. See [https://www.npmjs.com/package/config](https://www.npmjs.com/package/config) for more information on how to configure using different techniques such as environment variables.
-- test 6.3.8 requires an installation of hunspell.
+- install npm
+- test 6.3.8 requires an installation of `hunspell`.
   - For more details on how to manage languages, please also see [Managing Hunspell languages](https://github.com/secvisogram/csaf-validator-lib#managing-hunspell-languages)
-- start the service with `node backend/server.js`
+
+## Getting started
+
+To run the validator service, you basically need the same as for [developing](#developing).
+
+### Quick-Start Using Docker
+
+If you want to run by using the default settings, use docker installation option
+
+- Build docker image
+
+  ```sh
+  docker build -t csaf-validator-service .
+  ```
+
+- Start container
+
+  ```sh
+  docker run -d -p 8082:8082 --name csaf-validator-service csaf-validator-service
+  ```
+
+### Installation (step by step)
+
+- get into the git folder
+- run `npm ci` to install production dependencies.
+- run  `npm run dist` to build the validation service.
+- Copy the content of the dist folder to your working directory
+
+  ```bash
+  cp -r ./dist/* .
+  ```
+
+- Configure the service using a `production.json` file in
+  `backend/config`. All available parameters are outlined in `backend/config/development.json`. See [https://www.npmjs.com/package/config](https://www.npmjs.com/package/config) for more information on how to configure using different techniques such as environment variables.
+
+- Make sure to set the environment variable `NODE_ENV` to `production`.
+
+  ```bash
+  echo $NODE_ENV
+  ```
+
+  If a configuration file with the displayed name exists in the config folder, it will be used. If not, `default.json` will be loaded instead.
+
+- start the service with
+
+  ```bash
+  cd backend/
+  node server.js
+  ```
 
 To manage the process you can use Docker or an init system of your choice.
 
@@ -48,6 +92,27 @@ You most likely also want to run this behind a reverse proxy to handle TLS
 termination or CORS headers if the service is accessed from other domains. See
 [https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 for more information.
+
+[(back to top)](#bsi-secvisogram-csaf-validator-service)
+
+### Testrun
+
+Once the server is running, visit [http://localhost:&lt;config port&gt;/docs](http://localhost:8082/docs) in your browser. The default port of the application `8082`. See [configuration](#configuration) to learn about ways to change it.
+
+#### Validate a Json File
+
+- Expand POST under default
+- Click `Try it out` to change the test input and add your whole json file
+
+  ```bash
+  "document": {
+    <content of your json file>
+  }
+  ```
+
+- Hit execute and check the generate output below
+
+[(back to top)](#bsi-secvisogram-csaf-validator-service)
 
 ## Documentation
 
@@ -78,9 +143,10 @@ You need at least **Node.js version 20 or higher**. [Nodesource](https://github.
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
 
-### Installation
+### Installation Developing
 
 - Install server and csaf-validator-lib dependencies
+
   ```sh
   npm ci
   ```
@@ -129,20 +195,6 @@ npm test
 ```
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
-
-## Docker
-
-Build docker image
-
-```sh
-docker build -t csaf/validator-service .
-```
-
-Start container
-
-```sh
-docker run -d -p 8082:8082 --name csaf-validator-service csaf/validator-service
-```
 
 ## Persist with pm2
 
