@@ -2,6 +2,9 @@ name: Run Tests
 on:
   pull_request:
     branches:
+      - '**'
+  push:
+    branches:
       - main
 permissions:
   contents: read
@@ -9,14 +12,18 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x, 24.x]
+
     steps:
-      - run: sudo apt-get install hunspell
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm start &
       - uses: ifaxity/wait-on-action@v1.1.0
@@ -30,10 +37,10 @@ jobs:
           PR_NUMBER: ${{ github.event.number }}
         run: |
           echo $PR_NUMBER > ./pr_number
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: success() || failure()
         with:
-          name: test-results
+          name: test-results-${{ matrix.node-version }}
           path: |
             backend/test-results.json
             pr_number
