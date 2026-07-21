@@ -12,11 +12,9 @@ permissions:
 jobs:
   report:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [22.x, 24.x]
-
     steps:
     - name: Download workflow artifact
       uses: actions/download-artifact@v6

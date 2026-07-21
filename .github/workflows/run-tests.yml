@@ -12,11 +12,9 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [22.x, 24.x]
-
     steps:
       - uses: actions/checkout@v6
         with:
@@ -26,7 +24,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm start &
-      - uses: ifaxity/wait-on-action@v1.1.0
+      - uses: iFaxity/wait-on-action@v1.2.1
         with:
           delay: 1
           timeout: 30000
