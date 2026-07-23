@@ -8,14 +8,18 @@ permissions:
   contents: read
   actions: read
   checks: write
+  pull-requests: write
 jobs:
   report:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.x, 24.x]
     steps:
     - name: Download workflow artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
-        name: test-results
+        name: test-results-${{ matrix.node-version }}
         run-id: ${{ github.event.workflow_run.id }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Set pr number env
@@ -26,7 +30,7 @@ jobs:
       uses: phoenix-actions/test-reporting@v15
       id: test-report
       with:
-        artifact: test-results
-        name: Mocha Tests
+        artifact: test-results-${{ matrix.node-version }}
+        name: Mocha Tests (node v${{ matrix.node-version }})
         path: backend/test-results.json
         reporter: mocha-json
