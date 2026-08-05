@@ -4,6 +4,8 @@
 
 - [About the project](#about-the-project)
 - [Getting started](#getting-started)
+  - [Quick start with npm](#quick-start-with-npm)
+  - [Running from source](#running-from-source)
 - [Documentation](#documentation)
 - [Configuration](#configuration)
   - [CORS](#cors)
@@ -23,11 +25,27 @@
 
 ## About the project
 
-This is a service to validate documents against the [CSAF standard](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html). It uses the [csaf-validator-lib](https://github.com/secvisogram/csaf-validator-lib) under the hood which is included as a `git subtree` module.
+This is a service to validate documents against the [CSAF standard](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html). It uses the [csaf-validator-lib](https://github.com/secvisogram/csaf-validator-lib) under the hood which is included as an npm dependency.
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
 
 ## Getting started
+
+### Quick start with npm
+
+The fastest way to try the service, without cloning the repository, is:
+
+```sh
+npx @secvisogram/csaf-validator-service
+``` 
+
+This starts the server on the default port (`8082`) using the built-in default configuration. Once it's running, visit [http://localhost:8082/docs](http://localhost:8082/docs) to see the Swagger documentation (see [Documentation](#documentation)) or call `POST /api/v1/validate` directly.
+
+To override configuration (e.g. the port), see [Configuration](#configuration) — the `config` package supports environment variables and config-file layering.
+
+[(back to top)](#bsi-secvisogram-csaf-validator-service)
+
+### Running from source
 
 To run the validator service you basically need the same as for [developing](#developing).
 
@@ -58,6 +76,20 @@ The documentation is available as a swagger resource provided by the service its
 ## Configuration
 
 The project uses the [config](https://www.npmjs.com/package/config) npm package for configuration. It provides a variety of possibilities to inject configuration values e.g. environment variables or environment specific files.
+
+The quickest way to override a value without creating a config file is the `NODE_CONFIG` environment variable — a JSON string that gets merged on top of `default.json`. For example, to run on a different port:
+
+```sh
+# bash / Git Bash
+NODE_CONFIG='{"port":9090}' npx @secvisogram/csaf-validator-service
+```
+
+```powershell
+# PowerShell
+$env:NODE_CONFIG='{"port":9090}'; npx @secvisogram/csaf-validator-service
+```
+
+Any key from `backend/config/default.json` can be overridden this way, e.g. `{"port":9090,"ip":"0.0.0.0"}`. See the [config package docs](https://github.com/node-config/node-config/wiki/Environment-Variables#node_config) for the full set of environment variables it supports (`NODE_CONFIG_DIR`, `NODE_ENV`, `NODE_APP_INSTANCE`, etc.).
 
 ### CORS
 

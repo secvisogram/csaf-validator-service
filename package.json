@@ -1,6 +1,19 @@
 {
   "name": "@secvisogram/csaf-validator-service",
   "type": "module",
+  "bin": {
+    "csaf-validator-service": "bin/csaf-validator-service.js"
+  },
+  "files": [
+    "bin",
+    "backend/config/default.json",
+    "backend/config/minimal.json",
+    "backend/config/production.json",
+    "backend/lib",
+    "backend/package.json",
+    "backend/package-lock.json",
+    "backend/server.js"
+  ],
   "scripts": {
     "start": "cd backend && npm start",
     "test": "npm run test:typescript && npm run test:backend",
