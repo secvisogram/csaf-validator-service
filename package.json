@@ -50,7 +50,7 @@
     "typescript": "^7.0.2",
     "wait-on": "^8.0.3"
   },
-  "version": "2.0.31",
+  "version": "2.0.32",
   "allowScripts": {
     "@openapitools/openapi-generator-cli": true
   }
