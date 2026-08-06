@@ -24,7 +24,7 @@ const OPEN_API_INFO_MODULE = resolve(
   '../backend/lib/openApiInfo.js'
 )
 
-const pkg = /** @type {import('../package.json')} */ (
+const pkg = /** @type {typeof import('../package.json')} */ (
   JSON.parse(
     await readFile(resolve(import.meta.dirname, '../package.json'), 'utf-8')
   )
