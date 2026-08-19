@@ -3,20 +3,23 @@
 <!-- TOC depthfrom:2 depthto:3 -->
 
 - [About the project](#about-the-project)
+- [Requirements](#requirements)
 - [Getting started](#getting-started)
   - [Quick start with npm](#quick-start-with-npm)
-  - [Running from source](#running-from-source)
+  - [Quick start with docker](#quick-start-with-docker)
+  - [Installation (step by step)](#installation-step-by-step)
+  - [Testrun](#testrun)
+    - [Validate a JSON file](#validate-a-json-file)
 - [Documentation](#documentation)
 - [Configuration](#configuration)
   - [CORS](#cors)
 - [Developing](#developing)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+  - [Installation (for developing)](#installation-for-developing)
   - [Run server](#run-server)
   - [Generate documentation](#generate-documentation)
   - [Create new version](#create-new-version)
 - [Testing](#testing)
-- [Docker](#docker)
 - [Persist with pm2](#persist-with-pm2)
 - [Contributing](#contributing)
 - [Dependencies](#dependencies)
@@ -28,6 +31,13 @@
 This is a service to validate documents against the [CSAF standard](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf-v2.0.html). It uses the [csaf-validator-lib](https://github.com/secvisogram/csaf-validator-lib) under the hood which is included as an npm dependency.
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
+
+## Requirements
+
+- install Node.js 24
+- install npm
+- test 6.3.8 requires an installation of `hunspell`.
+  - For more details on how to manage languages, please also see [Managing Hunspell languages](https://github.com/secvisogram/csaf-validator-lib#managing-hunspell-languages)
 
 ## Getting started
 
@@ -45,20 +55,48 @@ To override configuration (e.g. the port), see [Configuration](#configuration) â
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
 
-### Running from source
+### Quick start with docker
 
-To run the validator service you basically need the same as for [developing](#developing).
+If you want to run the service with the default settings, use the Docker option below:
 
-- install Node.js 24
-- install production dependencies and copy all relevant files to the dist
-  folder by running `npm run dist`
-- copy the content of the dist folder to your working directory
-- Make sure to set the environment variable `NODE_ENV` to `production`
-- Configure the service using a `local-production.json` file in
+- Build docker image
+
+  ```sh
+  docker build -t csaf-validator-service .
+  ```
+
+- Start container
+
+  ```sh
+  docker run -d -p 8082:8082 --name csaf-validator-service csaf-validator-service
+  ```
+
+### Installation (step by step)
+
+- Clone this repository and run `npm ci` in the root folder to install production dependencies.
+- run `npm run dist` to build the validation service.
+- Copy the content of the dist folder to your working directory
+
+  ```bash
+  cp -r ./dist/* .
+  ```
+
+- Configure the service using a `production.json` file in
   `backend/config`. All available parameters are outlined in `backend/config/development.json`. See [https://www.npmjs.com/package/config](https://www.npmjs.com/package/config) for more information on how to configure using different techniques such as environment variables.
-- test 6.3.8 requires an installation of hunspell.
-  - For more details on how to manage languages, please also see [Managing Hunspell languages](https://github.com/secvisogram/csaf-validator-lib#managing-hunspell-languages)
-- start the service with `node backend/server.js`
+- Make sure to set the environment variable `NODE_ENV` to `production`.
+
+  ```bash
+  echo $NODE_ENV
+  ```
+
+  If a configuration file with the displayed name exists in the config folder, it will be used. If not, `default.json` will be loaded instead.
+
+- start the service with
+
+  ```bash
+  cd backend/
+  node server.js
+  ```
 
 To manage the process you can use Docker or an init system of your choice.
 
@@ -66,6 +104,27 @@ You most likely also want to run this behind a reverse proxy to handle TLS
 termination or CORS headers if the service is accessed from other domains. See
 [https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 for more information.
+
+[(back to top)](#bsi-secvisogram-csaf-validator-service)
+
+### Testrun
+
+Once the server is running, visit [http://localhost:&lt;config port&gt;/docs](http://localhost:8082/docs) in your browser. The default port of the application `8082`. See [configuration](#configuration) to learn about ways to change it.
+
+#### Validate a JSON file
+
+- Expand `POST` under default
+- Click `Try it out` to change the test input and add your whole json file
+
+  ```bash
+  "document": {
+    <content of your json file>
+  }
+  ```
+
+- Hit execute and check the generated output below
+
+[(back to top)](#bsi-secvisogram-csaf-validator-service)
 
 ## Documentation
 
@@ -106,13 +165,14 @@ See [Fastify CORS options](https://github.com/fastify/fastify-cors#options) for 
 
 ### Prerequisites
 
-You need at least **Node.js version 24 or higher**. [Nodesource](https://github.com/nodesource/distributions/blob/master/README.md) provides binary distributions for various Linux distributions.
+You need at least **Node.js version 24 or higher** (see [Requirements](#requirements)). [Nodesource](https://github.com/nodesource/distributions/blob/master/README.md) provides binary distributions for various Linux distributions.
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
 
-### Installation
+### Installation (for developing)
 
 - Install server and csaf-validator-lib dependencies
+
   ```sh
   npm ci
   ```
@@ -161,20 +221,6 @@ npm test
 ```
 
 [(back to top)](#bsi-secvisogram-csaf-validator-service)
-
-## Docker
-
-Build docker image
-
-```sh
-docker build -t csaf/validator-service .
-```
-
-Start container
-
-```sh
-docker run -d -p 8082:8082 --name csaf-validator-service csaf/validator-service
-```
 
 ## Persist with pm2
 
