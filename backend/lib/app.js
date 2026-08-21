@@ -6,6 +6,7 @@ import { openApiInfo } from './openApiInfo.js'
  * @param {import('fastify').FastifyInstance} fastify
  */
 export default async function (fastify) {
+  fastify.register(import('fastify-healthcheck'))
   fastify.register(import('@fastify/swagger'), {
     openapi: {
       info: {

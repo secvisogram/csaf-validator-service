@@ -28,4 +28,6 @@ ENV LANG=en
 
 USER node
 EXPOSE 8082
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+  CMD wget -q -O /dev/null http://127.0.0.1:8082/health || exit 1
 CMD [ "node", "backend/server.js" ]
