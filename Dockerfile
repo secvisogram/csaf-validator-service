@@ -2,7 +2,7 @@
 # This build created a staging docker image
 #
 
-FROM node:24-alpine AS appbuild
+FROM node:24.22.1-alpine AS appbuild
 WORKDIR /usr/src/csaf-validator-service
 COPY . .
 RUN npm ci && \
@@ -12,7 +12,7 @@ RUN npm ci && \
 # This build takes the production build from staging build
 #
 
-FROM node:24-alpine
+FROM node:24.22.1-alpine
 WORKDIR /usr/src/app
 RUN apk add hunspell hunspell-en hunspell-de-de && \
 	ln -s /usr/share/hunspell/en_US.aff /usr/share/hunspell/en.aff && \
