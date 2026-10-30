@@ -8,7 +8,7 @@ export const openApiInfo = /** @type {const} */ ({
     email: 'secvisogram@bsi.bund.de',
   },
   license: {
-    name: 'MIT',
+    name: 'Apache-2.0',
     url: 'https://github.com/secvisogram/csaf-validator-service/blob/main/LICENSE',
   },
 })
