@@ -17,7 +17,7 @@ jobs:
         node-version: [22.x, 24.x]
     steps:
     - name: Download workflow artifact
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v8
       with:
         name: test-results-${{ matrix.node-version }}
         run-id: ${{ github.event.workflow_run.id }}
@@ -27,7 +27,7 @@ jobs:
         PR_NUMBER=$(cat pr_number)
         echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
     - name: Test Report
-      uses: phoenix-actions/test-reporting@v15
+      uses: phoenix-actions/test-reporting@v16
       id: test-report
       with:
         artifact: test-results-${{ matrix.node-version }}
