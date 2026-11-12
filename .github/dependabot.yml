@@ -8,6 +8,20 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "daily"
     allow:
       - dependency-type: "production"
+    groups:
+      npm-production-dependencies:
+        applies-to: version-updates
+        patterns:
+          - "*"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    groups:
+      docker-base-images:
+        applies-to: version-updates
+        patterns:
+          - "*"
