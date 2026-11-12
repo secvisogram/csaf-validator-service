@@ -9,6 +9,8 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    cooldown:
+      semver-major-days: 30
     allow:
       - dependency-type: "production"
     groups:
@@ -16,15 +18,18 @@ updates:
         applies-to: version-updates
         patterns:
           - "*"
+        update-types:
+          - "minor"
+          - "patch"
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
-    ignore:
-      - dependency-name: "node"
-        update-types: ["version-update:semver-major"]
     groups:
       docker-base-images:
         applies-to: version-updates
         patterns:
           - "*"
+        update-types:
+          - "minor"
+          - "patch"
